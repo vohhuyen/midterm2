@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterm2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
+    <script src="../midterm2/data.js"></script>
+    <script src="../midterm2/midterm2.js"></script>
+</head>
+<body onload="loadspbody()">
+    <form action="#" method="GET" style="float: right;">
+        <h1>Quản lý sản phẩm</h1>
+        <div>
+            <label>Tên sản phẩm</label>
+
+            <input type="text" class="float-right pl-2" id="txtName" name="txtName" style="border: 0; border-radius: 10px; height: 40px; background: #f8fafd; width:100%; outline: none;">
+            <span id="errMessage"></span>
+        </div>
+        <div>
+            <label class="mt-3">Giá</label>
+            <input type="text" class="float-right pl-2" id="txtPrice" name="txtPrice" style="border: 0; border-radius: 10px; height: 40px; background: #f8fafd; width:100%; outline: none;">
+            <span id="errMessage"></span>
+        </div>
+        <div>
+            <label class="mt-3">Loại sản phẩm</label>
+            <select name="cmbType" id="cmbType" class="float-right" style="border: 0; border-radius: 10px; height: 40px; background: #f8fafd; width:100%; outline: none;">
+                <option value="1">Nam</option>
+                <option value="0">Nữ</option>
+            </select>
+        </div>
+        <div>
+            <label class="mt-3" style="display: none;">id</label>
+            <input type="text" class="float-right" id="txtId" name="txtId" style="border: 0; border-radius: 10px; height: 40px; background: #f8fafd; width:100%; outline: none;">
+        </div>
+        <div>
+            <lable class="mt-3">Hình ảnh</lable>
+            <div class="file-field">
+                <div class="btn btn-primary btn-rounded waves-effect btn-sm float-left" style="border-radius: 10px;">
+                    <span>Chọn hình ảnh</span>
+                    <input type="file" type="file" name="file" id="txtImg" accept="image/*">
+                </div>
+            </div>
+            <span id="errMessage"></span>
+        </div>
+        <div>
+            <button class="btn btn-primary mt-3 float-left" type="button" onclick="ThemSanPham()" style="width:55%; border-radius: 8px;">Thêm sản phẩm</button>
+            <button class="btn btn-primary mt-3 float-right text-white" type="button" onclick="LuuCapNhat()" style="width: 40%; border-radius: 8px">Cập nhật</button>
+        </div>
+    </form>
+    <div class="container-fluid p-0">
+        <div class="row m-0 pt-2">
+            <div class="col-sm-12 col-md-9 p-3">
+                <div class="box1 p-3" style="width: 1100px; height: 1000px; background: #f8fafd; border-radius: 15px;">
+                    <div data-spy="scroll" data-target="#myScrollspy" data-offset="10"
+                        style="height: 100%; overflow-y: scroll; padding: 5px;">
+                        <div class="row m-0">
+                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist" style="width: 100%; border: 0;">
+                                <li class="nav-item" style="width:50%;">
+                                    <a href="#home" class="nav_link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true"
+                                    style="padding: 0px 200px 19px 200px; border-radius: 10px; border: 0; background-color:cornflowerblue; color:white">Thời trang nam</a>
+                                </li>
+                                <li class="nav-item" style="width:50%">
+                                    <a href="#profile" class="nav-link active" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false"
+                                    style="border-radius: 10px; border: 0; text-align: center; background-color:cornflowerblue; color:white">Thời trang nữ</a>
+                                </li>
+                            </ul>
+                                <div class="tab-content" id="myTabContent" style="width:100%; display:flex;">
+                                    <div class="tab-game fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="width: 50%;">
+                                        <div class="row m-0" id="man">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="width: 50%;">
+                                        <div class="row m-0" id="women">
+
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
